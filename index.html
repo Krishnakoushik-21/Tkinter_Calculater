@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual Mode Calculator</title>
+    <meta name="description" content="A calculator with Basic and Scientific modes using a 3D flip effect.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Linked CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="scene">
+        <div class="calculator-card" id="calculator-card">
+
+            <!-- FRONT FACE: Basic Calculator -->
+            <div class="calculator-face front">
+                <div class="header">
+                    <span>Basic</span>
+                    <button class="toggle-mode-btn" id="to-scientific" title="Switch to Scientific">
+                        <i class="fa-solid fa-flask"></i>
+                    </button>
+                </div>
+                <div class="display">
+                    <input type="text" class="display-input" id="display-basic" readonly placeholder="0">
+                </div>
+                <div class="buttons basic-grid">
+                    <button class="btn operator" data-value="C">C</button>
+                    <button class="btn operator" data-value="DEL">⌫</button>
+                    <button class="btn operator" data-value="%">%</button>
+                    <button class="btn operator" data-value="/">/</button>
+
+                    <button class="btn" data-value="7">7</button>
+                    <button class="btn" data-value="8">8</button>
+                    <button class="btn" data-value="9">9</button>
+                    <button class="btn operator" data-value="*">*</button>
+
+                    <button class="btn" data-value="4">4</button>
+                    <button class="btn" data-value="5">5</button>
+                    <button class="btn" data-value="6">6</button>
+                    <button class="btn operator" data-value="-">-</button>
+
+                    <button class="btn" data-value="1">1</button>
+                    <button class="btn" data-value="2">2</button>
+                    <button class="btn" data-value="3">3</button>
+                    <button class="btn operator" data-value="+">+</button>
+
+                    <button class="btn zero" data-value="0">0</button>
+                    <button class="btn" data-value=".">.</button>
+                    <button class="btn equals" data-value="=">=</button>
+                </div>
+            </div>
+
+            <!-- BACK FACE: Scientific Calculator -->
+            <div class="calculator-face back">
+                <div class="header">
+                    <span>Scientific</span>
+                    <button class="toggle-mode-btn" id="to-basic" title="Switch to Basic">
+                        <i class="fa-solid fa-calculator"></i>
+                    </button>
+                </div>
+                <div class="display">
+                    <div class="mode-indicator" id="mode-indicator">RAD</div>
+                    <input type="text" class="display-input" id="display-scientific" readonly placeholder="0">
+                </div>
+                <div class="buttons scientific-grid">
+                    <!-- Scientific Functions Row 1 -->
+                    <button class="btn function" data-value="deg">DEG</button>
+                    <button class="btn function" data-value="(">(</button>
+                    <button class="btn function" data-value=")">)</button>
+                    <button class="btn operator" data-value="C">C</button>
+                    <button class="btn delete" data-value="DEL">⌫</button>
+
+                    <!-- Row 2 -->
+                    <button class="btn function" data-value="sin">sin</button>
+                    <button class="btn function" data-value="cos">cos</button>
+                    <button class="btn function" data-value="tan">tan</button>
+                    <button class="btn function" data-value="inv">1/x</button>
+                    <button class="btn operator" data-value="/">/</button>
+
+                    <!-- Row 3 -->
+                    <button class="btn function" data-value="ln">ln</button>
+                    <button class="btn function" data-value="log">log</button>
+                    <button class="btn" data-value="7">7</button>
+                    <button class="btn" data-value="8">8</button>
+                    <button class="btn" data-value="9">9</button>
+                    <button class="btn operator" data-value="*">*</button>
+
+                    <!-- Row 4 -->
+                    <button class="btn function" data-value="sqrt">√</button>
+                    <button class="btn function" data-value="^">^</button>
+                    <button class="btn" data-value="4">4</button>
+                    <button class="btn" data-value="5">5</button>
+                    <button class="btn" data-value="6">6</button>
+                    <button class="btn operator" data-value="-">-</button>
+
+                    <!-- Row 5 -->
+                    <button class="btn function" data-value="pi">π</button>
+                    <button class="btn function" data-value="e">e</button>
+                    <button class="btn" data-value="1">1</button>
+                    <button class="btn" data-value="2">2</button>
+                    <button class="btn" data-value="3">3</button>
+                    <button class="btn operator" data-value="+">+</button>
+
+                    <!-- Row 6 -->
+                    <button class="btn function" data-value="fact">x!</button>
+                    <button class="btn" data-value=".">.</button>
+                    <button class="btn zero" data-value="0">0</button>
+                    <!-- <button class="btn" data-value=".">.</button> Duplicate removed, 0 spans 1 now? need to check grid -->
+                    <button class="btn equals" data-value="=">=</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

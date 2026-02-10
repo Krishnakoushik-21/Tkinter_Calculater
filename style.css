@@ -1,0 +1,242 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top left, #2b32b2, #1488cc);
+    overflow: hidden;
+    perspective: 1000px;
+    /* Enable 3D perspective */
+}
+
+/* Scene */
+.scene {
+    width: 450px;
+    height: 700px;
+    /* Adjust as needed */
+    position: relative;
+    max-width: 95vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 3D Card */
+.calculator-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Bouncy flip */
+}
+
+.calculator-card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* Faces */
+.calculator-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.front {
+    /* Basic Calculator */
+    z-index: 2;
+}
+
+.back {
+    /* Scientific Calculator */
+    transform: rotateY(180deg);
+}
+
+/* Header with Toggle */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.toggle-mode-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #ffd700;
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle-mode-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: rotate(90deg);
+}
+
+/* Display Screen */
+.display {
+    width: 100%;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.display-input {
+    width: 100%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: right;
+    font-size: 2.5rem;
+    color: #fff;
+    outline: none;
+    cursor: default;
+}
+
+.mode-indicator {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 0.8rem;
+    color: #00fa9a;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+/* Grids */
+.buttons {
+    display: grid;
+    gap: 12px;
+    flex-grow: 1;
+    /* Take up remaining space */
+}
+
+.basic-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    /* 5 rows for basic */
+}
+
+.scientific-grid {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+/* Button Styling */
+.btn {
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific Button Styles */
+.operator {
+    background: rgba(255, 255, 255, 0.05);
+    color: #00fa9a;
+    /* SpringGreen */
+    font-weight: 600;
+}
+
+.function {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffd700;
+    font-size: 0.95rem;
+}
+
+.delete {
+    color: #ff6b6b;
+    font-weight: 600;
+}
+
+.equals {
+    grid-column: span 1;
+    background: #00fa9a;
+    color: #2b32b2;
+    font-weight: 700;
+}
+
+.equals:hover {
+    background: #00db84;
+}
+
+.zero {
+    grid-column: span 1;
+}
+
+/* For basic grid specifically, zero might need to span depending on layout preference */
+/* .basic-grid .zero { grid-column: span 2; } - Optional if we want wide zero */
+
+/* Responsive */
+@media (max-width: 500px) {
+    .scene {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .calculator-face {
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+    }
+
+    .buttons {
+        gap: 8px;
+    }
+
+    .btn {
+        font-size: 1rem;
+    }
+}
